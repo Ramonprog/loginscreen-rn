@@ -7,62 +7,56 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  ScrollView,
 } from "react-native";
+import { styles } from "./styles";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>teste</Text>
-      <Image source={require("./assets/login.jpg")} />
-      <Text>Sistema de Login</Text>
-      <Text>Bem vindo(a)! Digite seus dados abaixo.</Text>
+    <ScrollView style={styles.scrollView}>
+      <View style={styles.container}>
+        <Image source={require("./assets/login.jpg")} style={styles.logo} />
+        <Text style={styles.h1}>Sistema de Login</Text>
+        <Text style={styles.h2}>Bem vindo(a)! Digite seus dados abaixo.</Text>
 
-      <View>
-        <Text> Email: </Text>
-        <TextInput placeholder="Digite seu Email" />
-      </View>
+        <View style={styles.inputArea}>
+          <Text style={styles.inputLabel}> Email: </Text>
+          <TextInput style={styles.inputField} placeholder="Digite seu Email" />
+        </View>
 
-      <View>
-        <Text>Senha: </Text>
-        <TextInput placeholder="******" secureTextEntry />
-      </View>
+        <View style={styles.inputArea}>
+          <Text style={styles.inputLabel}>Senha: </Text>
+          <TextInput
+            style={styles.inputField}
+            placeholder="******"
+            secureTextEntry
+          />
+        </View>
 
-      <View>
-        <TouchableOpacity>
-          <Text>Esqueci minha senha</Text>
-        </TouchableOpacity>
-      </View>
+        <View style={styles.editionals}>
+          <TouchableOpacity style={styles.forgotBtnArea}>
+            <Text style={styles.forgotBtnText}>Esqueci minha senha</Text>
+          </TouchableOpacity>
+        </View>
 
-      <View>
-        <TouchableOpacity>
-          <Text>Entrar</Text>
-        </TouchableOpacity>
-      </View>
+        <View style={styles.buttonArea}>
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.buttonText}>Entrar</Text>
+          </TouchableOpacity>
+        </View>
 
-      <View>
-        <Text>Não tem uma conta?</Text>
-        <TouchableOpacity>
-          <Text>Cadastre-se</Text>
-        </TouchableOpacity>
-      </View>
+        <View style={styles.signUpArea}>
+          <Text style={styles.signUpText}>Não tem uma conta?</Text>
+          <TouchableOpacity>
+            <Text style={styles.signUpButnText}>Cadastre-se</Text>
+          </TouchableOpacity>
+        </View>
 
-      <View>
-        <Text>Criado por @ramon</Text>
+        <View style={styles.footerArea}>
+          <Text style={styles.footerText}>Criado por @ramon</Text>
+        </View>
+        <StatusBar style="auto" />
       </View>
-      <StatusBar style="auto" />
-    </View>
+    </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  img: {
-    width: "100px",
-    height: "100px",
-  },
-});
