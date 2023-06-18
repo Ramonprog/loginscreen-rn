@@ -10,8 +10,22 @@ import {
   ScrollView,
 } from "react-native";
 import { styles } from "./styles";
+import { useState } from "react";
+
+//autocapitalize no input de email, serve para evitar que comece com letra maiuscula  autoCapitalize="none"
+
+//keyboardType="email-address"  no input de email, ele posiciona as teclas para ficar melhor para o user acessar o email
+
+// secureTextEntry no input de password, serve para esconder a senha
 
 export default function App() {
+  const [emailField, setEmailField] = useState("");
+  const [passField, setPassField] = useState("");
+
+  const handleLoginButton = () => {
+    alert(`email é ${emailField} e a senha ${passField}`);
+  };
+
   return (
     <ScrollView style={styles.scrollView}>
       <View style={styles.container}>
@@ -21,7 +35,14 @@ export default function App() {
 
         <View style={styles.inputArea}>
           <Text style={styles.inputLabel}> Email: </Text>
-          <TextInput style={styles.inputField} placeholder="Digite seu Email" />
+          <TextInput
+            style={styles.inputField}
+            placeholder="Digite seu Email"
+            value={emailField}
+            onChangeText={(text) => setEmailField(text)}
+            autoCapitalize="none"
+            keyboardType="email-address"
+          />
         </View>
 
         <View style={styles.inputArea}>
@@ -30,6 +51,8 @@ export default function App() {
             style={styles.inputField}
             placeholder="******"
             secureTextEntry
+            value={passField}
+            onChangeText={(text) => setPassField(text)}
           />
         </View>
 
@@ -40,7 +63,7 @@ export default function App() {
         </View>
 
         <View style={styles.buttonArea}>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={handleLoginButton}>
             <Text style={styles.buttonText}>Entrar</Text>
           </TouchableOpacity>
         </View>
